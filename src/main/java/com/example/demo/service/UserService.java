@@ -1,16 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.beans.User;
-import com.example.demo.dao.UserDao;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.mapper.UserMapper;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
 
 @Service
 public class UserService {
-    final private UserDao ud;
+    final private UserMapper ud;
 
-    UserService(UserDao ud) {
+    UserService(UserMapper ud) {
         this.ud = ud;
     }
 

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 @EnableConfigurationProperties({ConfigBean.class})
-@MapperScan("com.example.demo.dao")
+@MapperScan("com.example.demo.mapper")
 //@ImportResource({"classpath:some-application.xml"})
 public class DemoApplication {
 	WelcomeProperties wp;

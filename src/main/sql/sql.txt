@@ -5,3 +5,48 @@ CREATE TABLE `user` (
   `money` double DEFAULT NULL COMMENT '账户余额',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
+
+CREATE TABLE SCOTT.STUDENT (
+    `SNO` VARCHAR(3) NOT NULL,
+    `SNAME` VARCHAR(9) NOT NULL,
+    `SSEX` CHAR(2) NOT NULL
+);
+
+INSERT INTO SCOTT.STUDENT VALUES ('001', 'KangKang', 'M ');
+INSERT INTO SCOTT.STUDENT VALUES ('002', 'Mike', 'M ');
+INSERT INTO SCOTT.STUDENT VALUES ('003', 'Jane', 'F ');
+
+
+# test
+use test;
+create table classes
+(
+	id int auto_increment primary key,
+	name varchar(30) null
+);
+
+create unique index classes_id_uindex
+	on classes (id);
+
+create table students
+(
+    id int auto_increment primary key,
+    class_id int,
+    name varchar(30),
+    gender varchar(1)
+);
+
+alter table students
+	add constraint students_classes_id_fk
+		foreign key (class_id) references classes (id);
+
+select c.name, count(gender)
+from classes c
+left join students s on s.class_id=c.id
+where s.gender='M'
+group by c.id;
+
+select count(1)
+from students s
+left join classes c on s.class_id=c.id
+where c.name='一班';

@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.mapper;
 
 import com.example.demo.beans.User;
 import org.apache.ibatis.annotations.Insert;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Mapper
 @Component(value = "UserDao")
-public interface UserDao {
+public interface UserMapper {
     @Select("SELECT * FROM user WHERE name = #{name}")
     User findUserByName(@Param("name") String name);
 
